@@ -7,16 +7,17 @@
 
 import xlrd as xl
 import xlsxwriter
+import os
 
 # Specifier ici le nom du fichier à decouper
-FILENAME = "../DATA_SOURCE/big_file_excel/articles/Articles DEV9.xlsx"
+NOM_FICHIER = "../DATA_SOURCE/Articles DEV10.xlsx"
 # Nom de fichier de sortie
-OUTPUT_NAME ="../DATA_SOURCE/splited_excel/articles/Articles DEV9"
+NOM_SORTIE ="../DATA_SOURCE/Articles DEV10"   # nom sans l'extension
 #Nombre de ligne à mettre dans un fichier
-NB_LIGNE = 500
+NB_LIGNE = 750
 
-def create_portion(donnee,OUTPUT_NAME,num_fichier,entete):
-    nom_de_sortie = OUTPUT_NAME+ "_" + str(num_fichier) + ".xlsx"
+def creer_portion(donnee,num_fichier,entete):
+    nom_de_sortie = NOM_SORTIE+ "_" + str(num_fichier) + ".xlsx"
     classeur = xlsxwriter.Workbook(nom_de_sortie)
     feuille = classeur.add_worksheet()
 
@@ -33,7 +34,7 @@ def create_portion(donnee,OUTPUT_NAME,num_fichier,entete):
 
 
 if __name__ == "__main__":
-    classeur = xl.open_workbook(FILENAME)
+    classeur = xl.open_workbook(NOM_FICHIER)
     classeur.encoding
     feuille = classeur.sheet_by_index(0)
 
@@ -50,12 +51,12 @@ if __name__ == "__main__":
             donnee.append(ligne)
             if (num_ligne % NB_LIGNE)==0:
                 num_fichier += 1
-                create_portion(donnee,OUTPUT_NAME,num_fichier,entete)
+                creer_portion(donnee,num_fichier,entete)
                 donnee = []
 
     if donnee:
         num_fichier += 1
-        create_portion(donnee,OUTPUT_NAME,num_fichier,entete)
+        creer_portion(donnee,num_fichier,entete)
         donnee = []
 
 
