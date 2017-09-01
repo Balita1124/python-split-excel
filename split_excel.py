@@ -10,9 +10,9 @@ import xlsxwriter
 import os
 
 # Specifier ici le nom du fichier à decouper
-NOM_FICHIER = "../DATA_SOURCE/Articles DEV10.xlsx"
+NOM_FICHIER = "PATH_TO_FILE/FILE.xlsx"
 # Nom de fichier de sortie
-NOM_SORTIE ="../DATA_SOURCE/Articles DEV10"   # nom sans l'extension
+NOM_SORTIE =".PATH_TO_FILE/NOM_FICHIER_SORTIE"   # nom sans l'extension
 #Nombre de ligne à mettre dans un fichier
 NB_LIGNE = 750
 
