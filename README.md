@@ -1,2 +1,3 @@
-# split_a_huge_excel_file
+# python-split-excel
+
 Split a huge excel file into multiple files
